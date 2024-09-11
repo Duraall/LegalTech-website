@@ -1,0 +1,1123 @@
+<!doctype html>
+<html lang="tr">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <style>
+      body {
+        margin: 0;
+        font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+        background-color: #ffffff;
+        color: #333;
+        line-height: 1.6;
+        font-size: 16px;
+        overflow-x: hidden;
+      }
+
+      .grid-container,
+      .grid-menu,
+      .secondCont,
+      .container,
+      .search-dropDown,
+      .thirdGridCont {
+        max-width: 100%;
+        box-sizing: border-box;
+      }
+
+      img {
+        max-width: 100%;
+        height: auto;
+      }
+
+      .topnav {
+        background-color: #f4f4f4;
+        width: 100%;
+        position: sticky;
+        top: 0;
+        z-index: 1000;
+      }
+
+      .topnav-content {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        max-width: 1500px;
+        height: 7em;
+        margin: 0 auto;
+        padding: 0 20px;
+      }
+
+      .logo img {
+        height: 6rem;
+        max-width: 100%;
+      }
+
+      .nav-links {
+        display: flex;
+        align-items: center;
+      }
+
+      .topnav a {
+        color: #333;
+        text-align: center;
+        padding: 14px 16px;
+        text-decoration: none;
+        font-size: 16px;
+        font-weight: 600;
+        transition: all 0.3s ease;
+      }
+
+      .topnav a.split {
+        background-color: #ffffff;
+        color: #000;
+        border: 1px solid #000;
+        margin-right: 10px;
+      }
+
+      .topnav a.split:hover {
+        background-color: #000;
+        color: #fff;
+      }
+      .grid-container {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        gap: 30px;
+        padding: 40px 60px;
+        max-width: 1500px;
+        margin: 0 auto;
+      }
+
+      .grid-item {
+        flex: 1;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+      }
+
+      .chart-container {
+        width: 450px;
+        max-height: 650px;
+      }
+      .chartBox {
+        display: flex;
+        width: 600px;
+        background: white;
+        align-items: center;
+        justify-content: center;
+        position: relative;
+      }
+
+      .chartCont-item {
+        display: none;
+        position: absolute;
+        top: 0;
+        right: 0;
+        width: 100%;
+        box-sizing: border-box;
+      }
+
+      .labels {
+        display: flex;
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 10px;
+      }
+
+      .labelBox {
+        display: flex;
+        align-items: center;
+        gap: 10px;
+      }
+
+      .square {
+        height: 20px;
+        width: 20px;
+        border-style: solid;
+      }
+
+      .label p {
+        margin: 0;
+      }
+
+      .grid-item h4 {
+        text-align: center;
+        font-size: 1.5rem;
+        line-height: 1.5;
+      }
+
+      .grid-menu {
+        display: grid;
+        gap: 30px;
+        padding: 40px 20px;
+        max-width: 1500px;
+        margin: 0 auto;
+      }
+
+      .grid-menu {
+        grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
+      }
+
+      .thirdGridCont {
+        display: grid;
+        grid-template-columns: 1fr 1fr 1fr;
+        grid-gap: 30px;
+        padding: 20px 20px;
+        max-width: 1500px;
+        margin: 0 20px;
+      }
+
+      .h2item {
+        margin-right: 0;
+        font-size: x-large;
+      }
+
+      .thirdContItem,
+      .grid-menuItem {
+        background-color: rgba(255, 255, 255, 0.8);
+        padding: 20px;
+        font-size: 1rem;
+        text-align: start;
+      }
+
+      .contButon {
+        background-color: #ffffff;
+        color: #000;
+        border: 1px solid #000;
+        margin-left: 12rem;
+        color: #333;
+        text-align: center;
+        padding: 14px 16px;
+        text-decoration: none;
+        font-size: 18px;
+        font-weight: 600;
+        transition: all 0.3s ease;
+        display: inline-block;
+      }
+
+      .contButon:hover {
+        background-color: #000;
+        color: #fff;
+      }
+
+      .mainPic {
+        width: 100%;
+        max-width: 1500px;
+        height: auto;
+        padding: 0 0 50px;
+        margin: 0 auto;
+        display: block;
+        border-bottom: 1px solid rgba(16, 13, 13, 0.6);
+      }
+
+      .secondCont {
+        max-width: 1500px;
+        margin: 0 auto;
+        padding: 30px 20px;
+      }
+
+      .container {
+        max-width: 1500px;
+        margin: 0 auto;
+        padding: 0 20px;
+      }
+
+      .search-dropDown {
+        max-width: 1500px;
+        margin: 0 auto;
+        padding: 2.8em 20px;
+      }
+
+      .listItems {
+        list-style-type: none;
+        padding: 0;
+        margin: 0;
+      }
+
+      li {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        padding: 15px 0;
+        border-bottom: 1px solid #000;
+        transition: all 0.3s ease;
+      }
+
+      li:hover {
+        color: rgba(0, 0, 0, 0.3);
+      }
+
+      .item-text {
+        flex-grow: 1;
+      }
+
+      .arrow {
+        margin-left: 10px;
+      }
+      .logos__marquee {
+        --gap: 1rem;
+        position: relative;
+        display: flex;
+        overflow: hidden;
+        user-select: none;
+        gap: var(--gap);
+      }
+
+      .logos__marquee__group {
+        flex-shrink: 0;
+        padding: 20px 0;
+        display: flex;
+        align-items: center;
+        justify-content: space-around;
+        gap: var(--gap);
+        min-width: 100%;
+        animation: scroll 20s linear infinite;
+      }
+
+      @keyframes scroll {
+        0% {
+          transform: translateX(0);
+        }
+        100% {
+          transform: translateX(calc(-100% - var(--gap)));
+        }
+      }
+
+      .logos__marquee__reverse .logos__marquee__group {
+        animation-direction: reverse;
+        animation-delay: -3s;
+      }
+
+      .logos__marquee__group img {
+        max-width: 100px;
+        height: auto;
+        object-fit: contain;
+        filter: grayscale(100%) opacity(0.5);
+      }
+      .logos__marquee::before {
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%) rotate(-45deg);
+        font-size: 5rem;
+        color: rgba(0, 0, 0, 0.1);
+        white-space: nowrap;
+        pointer-events: none;
+        z-index: 1;
+      }
+      .footer {
+        background-color: #f4f4f4;
+        color: #333;
+        padding: 20px 0;
+        margin-top: 40px;
+      }
+
+      .footer-content {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        max-width: 1500px;
+        margin: 0 auto;
+        padding: 0 20px;
+      }
+
+      .footer-links a {
+        color: #333;
+        text-decoration: none;
+        margin-right: 20px;
+        font-size: 14px;
+      }
+
+      .footer-links a:hover {
+        text-decoration: underline;
+      }
+
+      .footer-copyright {
+        font-size: 14px;
+      }
+
+      @media screen and (max-width: 1069px) {
+        .thirdGridCont {
+          grid-template-columns: 1fr;
+        }
+        .contButon {
+          margin-left: 0;
+        }
+
+        .thirdContItem {
+          text-align: center;
+        }
+
+        .h2item {
+          margin-right: 0;
+        }
+      }
+
+      @media screen and (max-width: 768px) {
+        .topnav-content {
+          flex-direction: row;
+          align-items: flex-start;
+        }
+
+        .nav-links {
+          flex-direction: row;
+          padding: 30px;
+          width: 100%;
+        }
+        .logo {
+          padding: 40px 20px;
+          max-width: 12rem;
+          max-height: 3rem;
+        }
+
+        .topnav a {
+          width: 100%;
+          max-height: 5rem;
+          padding: 10px 0;
+        }
+
+        .grid-container {
+          flex-direction: column;
+        }
+
+        .grid-menu {
+          grid-template-columns: 1fr;
+        }
+
+        .mainPic {
+          padding: 0 0 30px;
+        }
+        .brand-logo {
+          width: 150px;
+          height: 75px;
+          margin: 0 10px;
+        }
+
+        .footer-content {
+          flex-direction: column;
+          text-align: center;
+        }
+
+        .footer-links {
+          margin-bottom: 10px;
+        }
+
+        .footer-links a {
+          display: block;
+          margin: 10px 0;
+        }
+      }
+
+      @media screen and (max-width: 480px) {
+        body {
+          font-size: 12px;
+        }
+
+        .topnav a {
+          align-items: center;
+          font-size: 14px;
+          padding-bottom: 20px;
+          margin: auto;
+        }
+        .topnav-content {
+          height: 7em;
+          margin: 0 auto;
+          padding: 1rem 20px;
+        }
+        .topnav a.split {
+          max-width: 3rem;
+          max-height: 1.5rem;
+          padding: 0.5rem auto;
+        }
+
+        .nav-links {
+          padding-bottom: 40px;
+        }
+
+        .logo img {
+          height: 4.25rem;
+        }
+        .chartBox {
+          display: flex;
+          width: 100%;
+          background: white;
+          align-items: center;
+          justify-content: center;
+        }
+        .chartCont-item {
+          position: absolute;
+          bottom: 100px;
+          right: 0;
+          width: 100%;
+          padding: 10px;
+          box-sizing: border-box;
+        }
+
+        .grid-menuItem {
+          padding: 15px;
+        }
+        .chart-container {
+          max-width: 400px;
+          height: 300px;
+        }
+      }
+      @media screen and (max-width: 400px) {
+        body {
+          padding-left: 1em;
+        }
+        .chartBox {
+          display: flex;
+          width: 300px;
+          background: white;
+          align-items: center;
+          justify-content: center;
+        }
+      }
+    </style>
+  </head>
+  <body class="body">
+    <header class="topnav">
+      <div class="topnav-content">
+        <a href="#" class="logo">
+          <img src="logo.png" alt="Company Logo" loading="lazy" />
+        </a>
+        <nav class="nav-links">
+          <a href="#" class="split">Home Page</a>
+          <a href="contact.html" class="split">Contact Us</a>
+        </nav>
+      </div>
+    </header>
+
+    <main>
+      <section class="grid-container">
+        <div class="grid-item chart-container">
+          <div class="chartBox">
+            <canvas id="myChart"></canvas>
+            <div class="chartCont-item">
+              <div class="labels">
+                <div class="labelBox">
+                  <div
+                    class="square"
+                    style="background-color: rgba(0, 0, 0, 0)"
+                  ></div>
+                  <div class="label"><p>Cyber Security</p></div>
+                </div>
+                <div class="labelBox">
+                  <div
+                    class="square"
+                    style="background-color: rgba(0, 0, 0, 0.1)"
+                  ></div>
+                  <div class="label"><p>Legal Technologies</p></div>
+                </div>
+                <div class="labelBox">
+                  <div
+                    class="square"
+                    style="background-color: rgba(0, 0, 0, 0.4)"
+                  ></div>
+                  <div class="label"><p>Web3</p></div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="grid-item">
+          <h4>
+            The Most Comprehensive LegalTech Cyber Security & Web3 Solutions
+            Provider of Türkiye
+          </h4>
+        </div>
+      </section>
+
+      <section class="logos__marquee">
+        <div class="logos__marquee__group">
+          <img src="ACC.png" alt="Logo 1" />
+          <img src="Authentific.png" alt="Logo 2" />
+          <img src="copetract.png" alt="Logo 3" />
+          <img src="dats.png" alt="Logo 4" />
+          <img src="efilli.svg" alt="Logo 5" />
+          <img src="hsa.png" alt="Logo 6" />
+          <img src="totes.png" alt="Logo 7" />
+          <img src="Trailio.png" alt="Logo 8" />
+        </div>
+        <div class="logos__marquee__group" aria-hidden="true">
+          <img src="ACC.png" alt="Logo 1" />
+          <img src="Authentific.png" alt="Logo 2" />
+          <img src="copetract.png" alt="Logo 3" />
+          <img src="dats.png" alt="Logo 4" />
+          <img src="efilli.svg" alt="Logo 5" />
+          <img src="hsa.png" alt="Logo 6" />
+          <img src="totes.png" alt="Logo 7" />
+          <img src="Trailio.png" alt="Logo 8" />
+        </div>
+      </section>
+      <section class="logos__marquee logos__marquee__reverse">
+        <div class="logos__marquee__group">
+          <img src="dats.png" alt="Logo 4" />
+          <img src="hsa.png" alt="Logo 6" />
+          <img src="copetract.png" alt="Logo 3" />
+          <img src="totes.png" alt="Logo 7" />
+          <img src="efilli.svg" alt="Logo 5" />
+          <img src="Authentific.png" alt="Logo 2" />
+          <img src="Trailio.png" alt="Logo 8" />
+          <img src="ACC.png" alt="Logo 1" />
+        </div>
+        <div class="logos__marquee__group" aria-hidden="true">
+          <img src="dats.png" alt="Logo 4" />
+          <img src="hsa.png" alt="Logo 6" />
+          <img src="copetract.png" alt="Logo 3" />
+          <img src="totes.png" alt="Logo 7" />
+          <img src="efilli.svg" alt="Logo 5" />
+          <img src="Authentific.png" alt="Logo 2" />
+          <img src="Trailio.png" alt="Logo 8" />
+          <img src="ACC.png" alt="Logo 1" />
+        </div>
+      </section>
+
+      <section class="secondCont">
+        <h1>GOVERNMENT COMPLIANCE, DIGITAL BRAND PROTECTION, TRACK & TRACE</h1>
+      </section>
+
+      <section class="container">
+        <p>
+          Lorem ipsum dolor sit amet consectetur adipisicing elit. Animi,
+          maxime. Voluptate.
+        </p>
+      </section>
+
+      <section id="hizmetlerimiz" class="search-dropDown">
+        <p>Arama ve filtreleme gelecek buraya</p>
+      </section>
+
+      <section class="grid-menu">
+        <div class="grid-menuItem">
+          <h3>
+            GOVERNMENT COMPLIANCE, DIGITAL BRAND PROTECTION, TRACK & TRACE
+          </h3>
+          <ul class="listItems">
+            <li>
+              <span class="item-text">Contract Management Platform</span
+              ><span class="arrow">→</span>
+            </li>
+            <li>
+              <span class="item-text">Cookie Management Platform</span
+              ><span class="arrow">→</span>
+            </li>
+            <li>
+              <span class="item-text"
+                >Counterfeit Product Detection and Protection</span
+              ><span class="arrow">→</span>
+            </li>
+            <li>
+              <span class="item-text">Product Validation Platform</span
+              ><span class="arrow">→</span>
+            </li>
+            <li>
+              <span class="item-text">Regulatory Compliance Solutions</span
+              ><span class="arrow">→</span>
+            </li>
+            <li>
+              <span class="item-text">Certificate Management System</span
+              ><span class="arrow">→</span>
+            </li>
+          </ul>
+        </div>
+        <div class="grid-menuItem">
+          <h3>TAMPER EVIDENT SOLUTIONS</h3>
+          <ul class="listItems">
+            <li>
+              <span class="item-text">RFID Tags</span
+              ><span class="arrow">→</span>
+            </li>
+            <li>
+              <span class="item-text">Tamper Evident Security Labels</span
+              ><span class="arrow">→</span>
+            </li>
+            <li>
+              <span class="item-text">Tamper Evident Security Tapes</span
+              ><span class="arrow">→</span>
+            </li>
+            <li>
+              <span class="item-text">Tamper Evident Security Seals</span
+              ><span class="arrow">→</span>
+            </li>
+            <li>
+              <span class="item-text"
+                >One & Two Time Use Tamper Evident Security Bags</span
+              ><span class="arrow">→</span>
+            </li>
+            <li>
+              <span class="item-text"
+                >Re-Usable Tamper Evident Security Bags</span
+              ><span class="arrow">→</span>
+            </li>
+            <li>
+              <span class="item-text">Re-Usable Lockable Security Bags</span
+              ><span class="arrow">→</span>
+            </li>
+            <li>
+              <span class="item-text">Re-Usable Canvas Bags</span
+              ><span class="arrow">→</span>
+            </li>
+          </ul>
+        </div>
+        <div class="grid-menuItem">
+          <h3>ANTI-COUNTERFEIT SOLUTIONS</h3>
+          <ul class="listItems">
+            <li>
+              <span class="item-text">Digital ID</span
+              ><span class="arrow">→</span>
+            </li>
+            <li>
+              <span class="item-text">Anti-Counterfeit ID Cards</span
+              ><span class="arrow">→</span>
+            </li>
+            <li>
+              <span class="item-text">Anti-Counterfeit Security Documents</span
+              ><span class="arrow">→</span>
+            </li>
+            <li>
+              <span class="item-text">Anti-Counterfeit Security Labels</span
+              ><span class="arrow">→</span>
+            </li>
+            <li>
+              <span class="item-text">Anti-Counterfeit Voucher</span
+              ><span class="arrow">→</span>
+            </li>
+            <li>
+              <span class="item-text">Anti-Counterfeit Vehicle Stickers</span
+              ><span class="arrow">→</span>
+            </li>
+            <li>
+              <span class="item-text">Anti-Counterfeit Wristbands</span
+              ><span class="arrow">→</span>
+            </li>
+            <li>
+              <span class="item-text">Anti-Counterfeit Tickets</span
+              ><span class="arrow">→</span>
+            </li>
+            <li>
+              <span class="item-text">Counterfeit Detection Tools</span
+              ><span class="arrow">→</span>
+            </li>
+            <li>
+              <span class="item-text">Tax Stamps</span
+              ><span class="arrow">→</span>
+            </li>
+            <li>
+              <span class="item-text">Passport</span
+              ><span class="arrow">→</span>
+            </li>
+            <li>
+              <span class="item-text">Product Packaging</span
+              ><span class="arrow">→</span>
+            </li>
+            <li>
+              <span class="item-text">Desktop Security Paper Printers</span
+              ><span class="arrow">→</span>
+            </li>
+            <li>
+              <span class="item-text"
+                >Desktop ID Card Printers & Laminators</span
+              ><span class="arrow">→</span>
+            </li>
+          </ul>
+        </div>
+        <div class="grid-menuItem">
+          <h3>CYBER SECURITY AND ENCRYPTION</h3>
+          <ul class="listItems">
+            <li>
+              <span class="item-text">Cyber Security Consultancy</span
+              ><span class="arrow">→</span>
+            </li>
+            <li>
+              <span class="item-text"
+                >GRC, Compliance & Penetration Testing</span
+              ><span class="arrow">→</span>
+            </li>
+            <li>
+              <span class="item-text"
+                >Web3 DApp, Server, and Cloud-Based Penetration Testing</span
+              ><span class="arrow">→</span>
+            </li>
+            <li>
+              <span class="item-text">DDoS Tests</span
+              ><span class="arrow">→</span>
+            </li>
+            <li>
+              <span class="item-text">External Encryption SSD</span
+              ><span class="arrow">→</span>
+            </li>
+            <li>
+              <span class="item-text">Network Encryption Device</span
+              ><span class="arrow">→</span>
+            </li>
+            <li>
+              <span class="item-text">Data Diodes</span
+              ><span class="arrow">→</span>
+            </li>
+            <li>
+              <span class="item-text">SOC Solutions</span
+              ><span class="arrow">→</span>
+            </li>
+            <li>
+              <span class="item-text">Industrial Cyber Security + MSP</span
+              ><span class="arrow">→</span>
+            </li>
+          </ul>
+        </div>
+        <div class="grid-menuItem">
+          <h3>INTELLIGENCE</h3>
+          <ul class="listItems">
+            <li>
+              <span class="item-text"
+                >Funds Flow Management & Investigation System</span
+              ><span class="arrow">→</span>
+            </li>
+            <li>
+              <span class="item-text">Public Opinion Monitoring Solution</span
+              ><span class="arrow">→</span>
+            </li>
+            <li>
+              <span class="item-text"
+                >Threat Intelligence Gathering & Management Solution</span
+              ><span class="arrow">→</span>
+            </li>
+            <li>
+              <span class="item-text">Web3 Threat Intelligence</span
+              ><span class="arrow">→</span>
+            </li>
+            <li>
+              <span class="item-text">Dark Web Intelligence</span
+              ><span class="arrow">→</span>
+            </li>
+          </ul>
+        </div>
+        <div class="grid-menuItem">
+          <h3>SOFTWARE, SEO AND ENGINEERING</h3>
+          <ul class="listItems">
+            <li>
+              <span class="item-text">Blockchain Software Development</span
+              ><span class="arrow">→</span>
+            </li>
+            <li>
+              <span class="item-text"
+                >Artificial Intelligence Weapon Detection</span
+              ><span class="arrow">→</span>
+            </li>
+            <li>
+              <span class="item-text"
+                >Artificial Intelligence Facial Recognition</span
+              ><span class="arrow">→</span>
+            </li>
+            <li>
+              <span class="item-text">Digital Marketing Strategy</span
+              ><span class="arrow">→</span>
+            </li>
+            <li>
+              <span class="item-text">Web Analytics</span
+              ><span class="arrow">→</span>
+            </li>
+            <li>
+              <span class="item-text">Search Engine Optimization (SEO)</span
+              ><span class="arrow">→</span>
+            </li>
+            <li>
+              <span class="item-text">Mobile App Store Optimization</span
+              ><span class="arrow">→</span>
+            </li>
+            <li>
+              <span class="item-text">Conversion Rate Optimization (CRO)</span
+              ><span class="arrow">→</span>
+            </li>
+            <li>
+              <span class="item-text">Pay Per Click (PPC) Management</span
+              ><span class="arrow">→</span>
+            </li>
+            <li>
+              <span class="item-text"
+                >Industrial Registration Certificate Consultancy</span
+              ><span class="arrow">→</span>
+            </li>
+          </ul>
+        </div>
+      </section>
+      <section class="thirdGridCont">
+        <div class="thirdContİtem">
+          <h2 class="h2item">↳ Lorem ipsum dolor sit.?</h2>
+        </div>
+        <div class="thirdContİtem">
+          <p>
+            Lorem ipsum dolor sit, amet consectetur adipisicing elit.
+            Consequatur, nobis ipsa? Minus?.
+          </p>
+        </div>
+        <div class="thirdContİtem">
+          <a href="#" class="contButon">Lorem ipsum dolor sit.</a>
+        </div>
+      </section>
+
+      <footer class="footer">
+        <div class="footer-content">
+          <div class="footer-links">
+            <a href="#hizmetlerimiz">Hizmetler</a>
+            <a href="gizlilik.html">Gizlilik Politikası</a>
+            <a href="contact.html">İletişim</a>
+          </div>
+          <div class="footer-copyright">
+            &copy; 2024 Legal Teknoloji. Tüm hakları saklıdır.
+          </div>
+        </div>
+      </footer>
+    </main>
+
+    <script>
+      let navbar = document.getElementById("myTopnav");
+      let sticky = navbar.offsetTop;
+      let contentWrapper = document.querySelector(".content-wrapper");
+      let navbarHeight = navbar.offsetHeight;
+
+      function handleScroll() {
+        if (window.pageYOffset > sticky) {
+          navbar.classList.add("sticky");
+          contentWrapper.style.paddingTop = navbarHeight + "px";
+        } else {
+          navbar.classList.remove("sticky");
+          contentWrapper.style.paddingTop = "0px";
+        }
+      }
+
+      window.onscroll = handleScroll;
+      window.onresize = function () {
+        sticky = navbar.offsetTop;
+        navbarHeight = navbar.offsetHeight;
+        handleScroll();
+      };
+      if (window.innerWidth > 1024) {
+        document.querySelector('[data-load-on="desktop"]').style.display =
+          "block";
+      }
+
+      handleScroll();
+    </script>
+    <script
+      type="text/javascript"
+      src="https://cdn.jsdelivr.net/npm/chart.js/dist/chart.umd.min.js"
+    ></script>
+    <script>
+      let delayed;
+
+      const initialLawTechData = [75, 75, 75, 75, 75, 75];
+      const updatedLawTechData = [80, 80, 60, 75, 45, 70];
+      const thirdLawTechData = [65, 50, 75, 80, 80, 95];
+      const fourthLawTechData = [65, 75, 80, 90, 75, 75];
+      const fifthLawTechData = [75, 65, 75, 75, 75, 60];
+
+      const initialData = [25, 50, 50, 69, 36, 50];
+      const updatedData = [70, 70, 30, 60, 35, 45];
+      const thirdData = [55, 30, 60, 65, 65, 30];
+      const fourthData = [20, 65, 50, 65, 45, 65];
+      const fifthData = [65, 50, 65, 30, 75, 30];
+
+      let currentData = [...initialData];
+
+      const data = {
+        labels: [
+          "Legal Technologies",
+          "Cyber Security",
+          "Web3",
+          "Anti-Counterteif\nSolutions",
+          "Tamper Evident\nSolutions",
+          "Digital Brand\nProtection",
+        ],
+        datasets: [
+          {
+            label: "Cyber Security",
+            data: [100, 100, 100, 100, 100, 100],
+            fill: true,
+            backgroundColor: "rgba(0, 0, 0, 0)",
+            borderColor: "rgba(0, 0, 0, 0.5)",
+            pointBackgroundColor: "rgba(0, 0, 0, 0.5)",
+            pointBorderColor: "#fff",
+            pointHoverBackgroundColor: "#fff",
+            pointHoverBorderColor: "rgba(0, 0, 0, 0.1)",
+            pointStyle: false,
+          },
+          {
+            label: "LegalTech",
+            data: initialLawTechData,
+            fill: true,
+            backgroundColor: "rgba(0, 0, 0, 0.1)",
+            borderColor: "rgba(0, 0, 0, 0.5)",
+            pointBackgroundColor: "rgba(0, 0, 0, 0.5)",
+            pointBorderColor: "#fff",
+            pointHoverBackgroundColor: "#fff",
+            pointHoverBorderColor: "rgba(0, 0, 0, 0.1)",
+            pointStyle: false,
+          },
+          {
+            label: "Web3",
+            data: currentData,
+            fill: true,
+            backgroundColor: "rgba(0, 0, 0, 0.4)",
+            borderColor: "rgba(0, 0, 0, 0.5)",
+            pointBackgroundColor: "rgba(0, 0, 0, 0.5)",
+            pointBorderColor: "#fff",
+            pointHoverBackgroundColor: "#fff",
+            pointHoverBorderColor: "rgba(0, 0, 0, 0.1)",
+            pointStyle: false,
+          },
+        ],
+      };
+
+      const config = {
+        type: "radar",
+        data,
+        options: {
+          plugins: {
+            legend: {
+              display: true,
+              position: "bottom",
+              align: "center",
+              labels: {
+                font: {
+                  weight: "bold",
+                },
+                textAlign: "left",
+              },
+            },
+          },
+          layout: {
+            padding: {
+              top: 50,
+            },
+          },
+          elements: {
+            line: {
+              borderWidth: 1,
+            },
+          },
+          scales: {
+            r: {
+              beginAtZero: true,
+              ticks: {
+                count: 5,
+                display: false,
+              },
+              pointLabels: {
+                font: {
+                  weight: "bolder",
+                  size: 16,
+                },
+                callback: function (value, index) {
+                  if (value.includes("\n")) {
+                    return value.split("\n");
+                  }
+                  return value;
+                },
+              },
+            },
+          },
+          animation: {
+            duration: 1000,
+            easing: "easeOutQuart",
+            onComplete: () => {
+              delayed = true;
+            },
+            delay: (context) => {
+              let delay = 0;
+              if (
+                context.type === "data" &&
+                context.dataset.label === "Web3" &&
+                !delayed
+              ) {
+                delay = 0;
+              }
+              return delay;
+            },
+          },
+          transitions: {
+            active: {
+              animation: {
+                duration: 200,
+              },
+            },
+            resize: {
+              animation: {
+                duration: 0,
+              },
+            },
+            show: {
+              animations: {
+                colors: {
+                  type: "color",
+                  properties: ["borderColor", "backgroundColor"],
+                  from: "transparent",
+                },
+                visible: {
+                  type: "boolean",
+                  duration: 0,
+                },
+              },
+            },
+            hide: {
+              animations: {
+                colors: {
+                  type: "color",
+                  properties: ["borderColor", "backgroundColor"],
+                  to: "transparent",
+                },
+                visible: {
+                  type: "boolean",
+                  easing: "easeInExpo",
+                },
+              },
+            },
+          },
+        },
+      };
+
+      const myChart = new Chart(document.getElementById("myChart"), config);
+
+      function updateChartData() {
+        const web3Dataset = myChart.data.datasets.find(
+          (dataset) => dataset.label === "Web3"
+        );
+        const lawTechDataset = myChart.data.datasets.find(
+          (dataset) => dataset.label === "LegalTech"
+        );
+        if (web3Dataset) {
+          if (web3Dataset.data === initialData) {
+            web3Dataset.data = updatedData;
+          } else if (web3Dataset.data === updatedData) {
+            web3Dataset.data = thirdData;
+          } else if (web3Dataset.data === thirdData) {
+            web3Dataset.data = fourthData;
+          } else if (web3Dataset.data === fourthData) {
+            web3Dataset.data = fifthData;
+          } else {
+            web3Dataset.data = initialData;
+          }
+        }
+        if (lawTechDataset) {
+          if (lawTechDataset.data === initialLawTechData) {
+            lawTechDataset.data = updatedLawTechData;
+          } else if (lawTechDataset.data === updatedLawTechData) {
+            lawTechDataset.data = thirdLawTechData;
+          } else if (lawTechDataset.data === thirdLawTechData) {
+            lawTechDataset.data = fourthLawTechData;
+          } else if (lawTechDataset.data === fourthLawTechData) {
+            lawTechDataset.data = fifthLawTechData;
+          } else {
+            lawTechDataset.data = initialLawTechData;
+          }
+        }
+        myChart.update();
+      }
+
+      setInterval(updateChartData, 1000);
+      updateChartData();
+    </script>
+  </body>
+</html>
